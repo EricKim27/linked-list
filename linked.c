@@ -29,7 +29,7 @@ NODE *add_node(NODE *prev_node, char *data[MAX_CHAR_LENGTH])
     node->data[sizeof(node->data) - 1] = '\0';
     return node;
 }
-NODE *move_node_cursor(NODE *current, int offset)
+static NODE *move_node_cursor(NODE *current, int offset)
 {
     NODE *cursor = current;
     for(int i = 0; i<offset; i++)
@@ -37,4 +37,9 @@ NODE *move_node_cursor(NODE *current, int offset)
         cursor = cursor->next;
     }
     return cursor;
+}
+
+void node_seek(NODE_DESCRIPTOR *node, int offset)
+{
+    node->node = move_node_cursor(node->node, offset);
 }
