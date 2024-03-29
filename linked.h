@@ -13,12 +13,8 @@ typedef struct node_header {
     NODE *next;
 }NODE_HEADER;
 
-typedef struct descriptor {
-    NODE *node;
-} NODE_DESCRIPTOR;
-
 //functions that manipulates linked lists.
 NODE_HEADER *init_node(char* name);
 NODE *add_node_to_header(NODE_HEADER *header, char *data[MAX_CHAR_LENGTH]);
 NODE *add_node(NODE *prev_node, char *data[MAX_CHAR_LENGTH]);
-void node_seek(NODE_DESCRIPTOR *node, int offset);
+void node_seek(NODE* node, int offset);
