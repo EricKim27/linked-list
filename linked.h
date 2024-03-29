@@ -1,6 +1,9 @@
 #define MAX_CHAR_LENGTH 1024
 #define INITIAL_NODE(node_header) ((node_header)->next)
 
+typedef struct node NODE;
+typedef struct node_header NODE_HEADER;
+
 typedef struct node {
     char data[MAX_CHAR_LENGTH];
         struct node *next;
@@ -14,10 +17,10 @@ typedef struct node_header {
 }NODE_HEADER;
 
 //initializes linked list.
-NODE_HEADER *init_node(char* name, char *data[MAX_CHAR_LENGTH]);
+NODE_HEADER *init_node(char *name, char data[MAX_CHAR_LENGTH]);
 
 //adds an entry to list.
-NODE *add_node(NODE *prev_node, char *data[MAX_CHAR_LENGTH]);
+NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
 
 //moves the cursor to seek through lists.
-void node_seek(NODE* node, int offset);
+void node_seek(NODE** node, int offset);
