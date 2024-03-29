@@ -13,8 +13,11 @@ typedef struct node_header {
     NODE *next;
 }NODE_HEADER;
 
-//functions that manipulates linked lists.
-NODE_HEADER *init_node(char* name);
-NODE *add_node_to_header(NODE_HEADER *header, char *data[MAX_CHAR_LENGTH]);
+//initializes linked list.
+NODE_HEADER *init_node(char* name, char *data[MAX_CHAR_LENGTH]);
+
+//adds an entry to list.
 NODE *add_node(NODE *prev_node, char *data[MAX_CHAR_LENGTH]);
+
+//moves the cursor to seek through lists.
 void node_seek(NODE* node, int offset);
