@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-NODE_HEADER *init_node(char* name, char *data[MAX_CHAR_LENGTH])
+NODE_HEADER *init_node(char* name, char data[MAX_CHAR_LENGTH])
 {
     NODE_HEADER* header = (NODE_HEADER*)malloc(sizeof(NODE_HEADER));
     strncpy(header->list_name, name, sizeof(header->list_name) - 1);
@@ -15,9 +15,9 @@ NODE_HEADER *init_node(char* name, char *data[MAX_CHAR_LENGTH])
     header->next = node;
     return header;
 }
-NODE *add_node(NODE *prev_node, char *data[MAX_CHAR_LENGTH])
+NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH])
 {
-    NODE *node;
+    NODE *node = (NODE*)malloc(sizeof(NODE));
     node->next = NULL;
     node->prev = prev_node;
     node->prev_header = NULL;
@@ -34,19 +34,24 @@ static NODE *move_node_cursor(NODE *current, int offset)
     {
         for(int i = 0; i<offset; i++)
         {
-            cursor = cursor->next;
+            if(cursor->next != NULL)
+            {
+                cursor = cursor->next;
+            }
         }
     } else
     {
         for(int i = 0; i<abs(offset); i++)
         {
-            cursor = cursor->prev;
+            if(cursor->prev != NULL){
+                cursor = cursor->prev;
+            }
         }
     }
     return cursor;
 }
 
-void node_seek(NODE *node, int offset)
+void node_seek(NODE **node, int offset)
 {
     node = move_node_cursor(node, offset);
 }
