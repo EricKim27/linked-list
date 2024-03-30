@@ -24,3 +24,6 @@ NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
 
 //moves the cursor to seek through lists.
 void node_seek(NODE** node, int offset);
+
+//flushes the entire list
+void flush_node(NODE_HEADER *header);

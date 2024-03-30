@@ -55,3 +55,15 @@ void node_seek(NODE **node, int offset)
 {
     node = move_node_cursor(node, offset);
 }
+
+void flush_list(NODE_HEADER *header)
+{
+    NODE *node = INITIAL_NODE(header);
+    while(node->next != NULL)
+    {
+        NODE *node_cur = node;
+        NODE *node = node->next;
+        free(node_cur);
+    }
+    free(header);
+}
