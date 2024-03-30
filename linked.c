@@ -59,10 +59,10 @@ void node_seek(NODE **node, int offset)
 void flush_list(NODE_HEADER *header)
 {
     NODE *node = INITIAL_NODE(header);
-    while(node->next != NULL)
+    while(node != NULL)
     {
         NODE *node_cur = node;
-        NODE *node = node->next;
+        node = node->next;
         free(node_cur);
     }
     free(header);
