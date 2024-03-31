@@ -24,7 +24,10 @@ extern NODE_HEADER *init_node(char *name, char data[MAX_CHAR_LENGTH]);
 extern NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
 
 //moves the cursor to seek through lists.
-extern void node_seek(NODE** node, int offset);
+extern inline void node_seek(NODE** node, int offset);
 
-//flushes the entire list
+//flushes the entire list.
 extern void flush_list(NODE_HEADER *header);
+
+//removes an entry from the list.
+extern void remove_node(NODE_HEADER *header, int offset);

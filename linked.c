@@ -74,3 +74,25 @@ void flush_list(NODE_HEADER *header)
     }
     free(header);
 }
+void remove_node(NODE_HEADER *header, int offset)
+{
+    NODE *node = INITIAL_NODE(header);
+    node_seek(&node, offset);
+    if(node == NULL)
+    {
+        return;
+    }
+    if(node->prev != NULL)
+    {
+        node->prev->next = node->next;
+    } else
+    {
+        header->next = node->next;
+    }
+
+    if(node->next != NULL)
+    {
+        node->next->prev = node->prev;
+    }
+    free(node);
+}
