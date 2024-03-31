@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
             printf("Data: %s\n", current->data);
             current = current->next;
         }
-        flush_node(test);
+        flush_list(test);
         return EXIT_SUCCESS;
     }
 }

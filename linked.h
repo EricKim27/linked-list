@@ -26,4 +26,4 @@ NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
 void node_seek(NODE** node, int offset);
 
 //flushes the entire list
-void flush_node(NODE_HEADER *header);
+extern void flush_list(NODE_HEADER *header);
