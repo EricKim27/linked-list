@@ -38,6 +38,9 @@ static NODE *move_node_cursor(NODE *current, int offset)
             if(cursor->next != NULL)
             {
                 cursor = cursor->next;
+            } else 
+            {
+                break;
             }
         }
     } else
@@ -46,13 +49,17 @@ static NODE *move_node_cursor(NODE *current, int offset)
         {
             if(cursor->prev != NULL){
                 cursor = cursor->prev;
+            } else 
+            {
+                break;
             }
         }
     }
     return cursor;
 }
 
-void node_seek(NODE **node, int offset)
+//currently this function is not working correctly.
+void inline node_seek(NODE **node, int offset)
 {
     node = move_node_cursor(node, offset);
 }
