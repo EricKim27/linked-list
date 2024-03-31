@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         NODE_HEADER *test = init_node(name, data);
         NODE *prev_node = test->next;
         NODE *cursor;
-        for(int i = 0; i<atoi(argv[1]) - 1; i++)
+        for(int i = 0; i<atoi(argv[1]); i++)
         {
             cursor = add_node(prev_node, data);
             prev_node = cursor;
