@@ -21,6 +21,7 @@ NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH])
     node->next = NULL;
     node->prev = prev_node;
     node->prev_header = NULL;
+    prev_node->next = node;
     strncpy(node->data, data, sizeof(node->data) - 1);
     node->data[sizeof(node->data) - 1] = '\0';
     return node;
@@ -61,9 +62,9 @@ void flush_list(NODE_HEADER *header)
     NODE *node = INITIAL_NODE(header);
     while(node != NULL)
     {
-        NODE *node_cur = node;
-        node = node->next;
-        free(node_cur);
+        NODE *next_node = node->next;
+        free(node);
+        node = next_node;
     }
     free(header);
 }
