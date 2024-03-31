@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
         while(current->next != NULL)
         {
             printf("Data: %s\n", current->data);
-            current = current->next;
+            node_seek(&current, 1);
         }
         flush_list(test);
         return EXIT_SUCCESS;

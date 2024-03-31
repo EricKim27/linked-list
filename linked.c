@@ -58,10 +58,9 @@ static NODE *move_node_cursor(NODE *current, int offset)
     return cursor;
 }
 
-//currently this function is not working correctly.
 void inline node_seek(NODE **node, int offset)
 {
-    node = move_node_cursor(node, offset);
+    *node = move_node_cursor(*node, offset);
 }
 
 void flush_list(NODE_HEADER *header)

@@ -1,7 +1,8 @@
 #define MAX_CHAR_LENGTH 1024
 #define INITIAL_NODE(node_header) ((node_header)->next)
-
+//structure for a single entry.
 typedef struct node NODE;
+//structure for a header file of an entry.
 typedef struct node_header NODE_HEADER;
 
 typedef struct node {
@@ -17,13 +18,13 @@ typedef struct node_header {
 }NODE_HEADER;
 
 //initializes linked list.
-NODE_HEADER *init_node(char *name, char data[MAX_CHAR_LENGTH]);
+extern NODE_HEADER *init_node(char *name, char data[MAX_CHAR_LENGTH]);
 
 //adds an entry to list.
-NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
+extern NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
 
 //moves the cursor to seek through lists.
-void node_seek(NODE** node, int offset);
+extern void node_seek(NODE** node, int offset);
 
 //flushes the entire list
 extern void flush_list(NODE_HEADER *header);
