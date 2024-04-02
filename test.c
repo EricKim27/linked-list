@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
+#include <string.h>
 #define errExit(msg)    \
   do {                  \
     perror(msg);        \
@@ -26,6 +27,9 @@ int main(int argc, char *argv[])
     {
         printf("usage: %s <number of lists>\n", argv[0]);
         return EXIT_FAILURE;
+    } else if(strcmp(argv[1], "help") == 0){
+        printf("This program creates a linked list with a number of entries according to the arguments.\n");
+        return 0;
     } else 
     {
         char *name = "example";
