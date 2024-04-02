@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         NODE *current = INITIAL_NODE(test);
         while(current->next != NULL)
         {
-            printf("Data: %s\n", current->data);
+            printf("Address: %p\n", current);
             node_seek(&current, 1);
         }
         flush_list(test);
