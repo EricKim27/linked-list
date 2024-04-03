@@ -72,6 +72,7 @@ void flush_list(NODE_HEADER *header)
         free(node);
         node = next_node;
     }
+    node = NULL;
     free(header);
 }
 void remove_node(NODE_HEADER *header, int offset)
