@@ -77,7 +77,7 @@ void flush_list(NODE_HEADER *header)
 void remove_node(NODE_HEADER *header, int offset)
 {
     NODE *node = INITIAL_NODE(header);
-    node_seek(&node, offset);
+    node_seek(&node, offset - 1);
     if(node == NULL)
     {
         return;
