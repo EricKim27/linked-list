@@ -1,3 +1,6 @@
+#ifdef _LINKED_H_
+#define _LINKED_H_
+
 #define MAX_CHAR_LENGTH 1024
 #define INITIAL_NODE(node_header) ((node_header)->next)
 //structure for a single entry.
@@ -31,3 +34,4 @@ extern void flush_list(NODE_HEADER *header);
 
 //removes an entry from the list.
 extern void remove_node(NODE_HEADER *header, int offset);
+#endif
