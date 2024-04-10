@@ -1,2 +1,6 @@
 *.o
 test
+.idea/linked_list.iml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/vcs.xml
