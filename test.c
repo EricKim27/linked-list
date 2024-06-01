@@ -33,7 +33,10 @@ int main(int argc, char *argv[])
     } else 
     {
         char *name = "example";
-        char *data = "example data";
+        char data[MAX_CHAR_LENGTH];
+        char data_to_write[13] = "example data";
+        strncpy(data, data_to_write, sizeof(data_to_write) - 1);
+        data[sizeof(data_to_write) - 1] = '\0';
         test = init_node(name, data);
         NODE *prev_node = test->next;
         NODE *cursor;

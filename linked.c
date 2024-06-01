@@ -10,7 +10,7 @@ NODE_HEADER *init_node(char* name, char data[MAX_CHAR_LENGTH])
     NODE *node = (NODE*)malloc(sizeof(NODE));
     strncpy(node->data, data, sizeof(node->data) - 1);
     node->data[sizeof(node->data) - 1] = '\0';
-    node->prev = header;
+    node->prev_header = header;
     node->next = NULL;
     header->next = node;
     return header;
