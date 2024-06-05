@@ -1,7 +1,9 @@
 *.o
 test
+.vscode/*
 .idea/linked_list.iml
 .idea/modules.xml
 .idea/workspace.xml
 .idea/vcs.xml
 .idea
+linked_test
