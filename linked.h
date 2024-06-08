@@ -3,16 +3,22 @@
 
 #define MAX_CHAR_LENGTH 1024
 #define INITIAL_NODE(node_header) ((node_header)->next)
+typedef enum {INT, CHAR, DOUBLE} dtype_t;
 //structure for a single entry.
 typedef struct node NODE;
 //structure for a header file of an entry.
 typedef struct node_header NODE_HEADER;
 
 typedef struct node {
-    char data[MAX_CHAR_LENGTH];
-        struct node *next;
-        NODE *prev;
-        NODE_HEADER *prev_header;
+    union {
+        int int_data;
+        double double_data;
+        char char_data[MAX_CHAR_LENGTH];
+    } data;
+    dtype_t type;
+    struct node *next;
+    NODE *prev;
+    NODE_HEADER *prev_header;
 } NODE;
 
 typedef struct node_header {
@@ -21,10 +27,10 @@ typedef struct node_header {
 }NODE_HEADER;
 
 //initializes linked list.
-extern NODE_HEADER *init_node(char *name, char data[MAX_CHAR_LENGTH]);
+extern NODE_HEADER *init_node(char* name, void *data, dtype_t type);
 
 //adds an entry to list.
-extern NODE *add_node(NODE *prev_node, char data[MAX_CHAR_LENGTH]);
+extern NODE *add_node(NODE *prev_node, void *data, dtype_t type);
 
 //moves the cursor to seek through lists.
 extern inline void node_seek(NODE** node, int offset);

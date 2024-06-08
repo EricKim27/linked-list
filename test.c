@@ -37,12 +37,12 @@ int main(int argc, char *argv[])
         char data_to_write[13] = "example data";
         strncpy(data, data_to_write, sizeof(data_to_write) - 1);
         data[sizeof(data_to_write) - 1] = '\0';
-        test = init_node(name, data);
+        test = init_node(name, &data, CHAR);
         NODE *prev_node = test->next;
         NODE *cursor;
         for(int i = 0; i<atoi(argv[1]); i++)
         {
-            cursor = add_node(prev_node, data);
+            cursor = add_node(prev_node, &data, CHAR);
             prev_node = cursor;
         }
         NODE *current = INITIAL_NODE(test);
