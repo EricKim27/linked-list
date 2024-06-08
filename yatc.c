@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+//This code is yet to be complete.
 
 void do_jobs(char *command[]); //gonna implement this later.
 
