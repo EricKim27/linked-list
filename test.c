@@ -22,26 +22,33 @@ static void sigintHandler(int sig) {
 
 int main(int argc, char *argv[])
 {
+    int verbose = 1;
     if(signal(SIGINT, sigintHandler) == SIG_ERR) errExit("interrupted!"); 
     if(argc < 2)
     {
-        printf("usage: %s <number of lists>\n", argv[0]);
+        printf("usage: %s [-v] <number of lists>\n", argv[0]);
         return EXIT_FAILURE;
     } else if(strcmp(argv[1], "help") == 0){
         printf("This program creates a linked list with a number of entries according to the arguments.\n");
         return 0;
-    } else 
+    } else if(strcmp(argv[1], "-v") == 0){
+        verbose = 0;
+    }
     {
         char *name = "example";
         char data[MAX_CHAR_LENGTH];
-        char data_to_write[13] = "example data";
+        char data_to_write[20];
+        sprintf(data_to_write, "example data %d", 0);
         strncpy(data, data_to_write, sizeof(data_to_write) - 1);
         data[sizeof(data_to_write) - 1] = '\0';
         test = init_node(name, &data, CHAR);
         NODE *prev_node = test->next;
         NODE *cursor;
-        for(int i = 0; i<atoi(argv[1]); i++)
+        for(int i = 0; i<atoi(argv[argc - 1]); i++)
         {
+            sprintf(data_to_write, "example data %d", i + 1);
+            strncpy(data, data_to_write, sizeof(data_to_write) - 1);
+            data[sizeof(data_to_write) - 1] = '\0';
             cursor = add_node(prev_node, &data, CHAR);
             prev_node = cursor;
         }
@@ -49,6 +56,9 @@ int main(int argc, char *argv[])
         while(current->next != NULL)
         {
             printf("Address: %p\n", current);
+            if(verbose == 0){
+                printf("Current entry value: %s\n", current->data.char_data);
+            }
             node_seek(&current, 1);
         }
         flush_list(test);
